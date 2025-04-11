@@ -75,21 +75,8 @@ def main():
         print("Please enter a positive integer.")
         return
 
-    # Example usage of NumbersRevealedOnMap
     print("Available numbers on map:", NumbersRevealedOnMap.available_numbers)
-
     print("Calculating prime factorization for %d ...", number)
-
-    # # Example usage
-    # factors = prime_factorization(number)
-    # print(f"Prime factorization of {number}: {factors}")
-
-    # # Check if each factor is available
-    # for factor in factors:
-    #     if is_factor_available(factor):
-    #         print(f"Factor {factor} is available.")
-    #     else:
-    #         print(f"Factor {factor} is not available.")
 
     beltmatic_factorization(number)
     
