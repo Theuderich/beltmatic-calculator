@@ -49,11 +49,14 @@ def find_equation(number):
     """
     
     """
+    print(f"\n\nFinding equation for {number}...\n\n")
     
     divisors_available = NumbersRevealedOnMap.available_numbers.copy()
     divisors_possible = find_division(number, divisors_available)
+    print(f"divisors_possible1: {divisors_possible}")
     for divisor in divisors_possible:
         quotient = int(number / divisor)
+        print(f"quotient: {quotient}, divisor: {divisor}")
         if quotient in NumbersRevealedOnMap.available_numbers:
             return f"{divisor} * {quotient}"
         else:
@@ -62,14 +65,16 @@ def find_equation(number):
 
     divisors_available = list(range(1, int(math.sqrt(number)) + 1))
     divisors_possible = find_division(number, divisors_available)
+    print(f"divisors_possible2: {divisors_possible}")
     for divisor in divisors_possible:
         quotient = int(number / divisor)
         first_equation_segment = f"{divisor}"
         if divisor not in NumbersRevealedOnMap.available_numbers:
-            first_equation_segment = find_equation(quotient)
+            first_equation_segment = find_equation(divisor)
         second_equation_segment = f"{quotient}"
         if quotient not in NumbersRevealedOnMap.available_numbers:
             second_equation_segment = find_equation(quotient)
+        print(f"quotient: {quotient}, divisor: {divisor}")
         return f"({first_equation_segment}) * ({second_equation_segment})"
 
     minuend = number
@@ -77,6 +82,7 @@ def find_equation(number):
         if subtrahend >= number:
             continue
         difference = minuend - subtrahend
+        print(f"difference: {difference}, subtrahend: {subtrahend}")
         if difference in NumbersRevealedOnMap.available_numbers:
             return f"{subtrahend} + {difference}"
         else:
